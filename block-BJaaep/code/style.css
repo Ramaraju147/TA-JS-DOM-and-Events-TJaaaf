@@ -36,7 +36,7 @@ img {
 
 body {
   background: #f2f4f8;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
 }
 
@@ -116,4 +116,8 @@ h2 {
 .heading {
   text-align: center;
   margin-top: 2rem;
+}
+
+.box.is-flipped {
+  transform: rotateY(180deg);
 }
