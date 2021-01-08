@@ -1,0 +1,63 @@
+body {
+  text-align: center;
+  width: 680px;
+  margin: 0 auto;
+}
+.screen {
+  height: 100px;
+  background-color: black;
+  border-radius: 10px;
+  margin: 0 auto;
+  color: white;
+  font-size: 52px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 150px;
+  font-size: 32px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgb(207, 207, 207);
+  color: black;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.op {
+  background-color: rgb(113, 1, 51);
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.number-pad {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear {
+  background-color: rgb(61, 27, 16);
+  color: white;
+}
+
+.equal {
+  background-color: rgb(1, 128, 128);
+  color: white;
+  flex: 1;
+  box-sizing: border-box;
+  margin: 0 10px 10px 10px;
+}
+
+.row4 {
+  display: flex;
+  flex-direction: column;
+}
