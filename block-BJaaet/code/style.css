@@ -1,0 +1,40 @@
+body {
+  background-color: #c7bfb4;
+}
+
+.movie {
+  background-color: #74cfe6;
+  width: 400px;
+  padding: 30px 20px;
+  border-radius: 5px;
+  margin: 2rem auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.input {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+}
+
+ul {
+  margin: 0;
+  padding: 10px 20px;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li p {
+  display: inline-block;
+  font-size: 20px;
+}
