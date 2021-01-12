@@ -35,3 +35,33 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+body {
+  margin: 2rem auto;
+}
+
+form * {
+  display: block;
+  padding: 3px;
+  margin: 0 auto;
+  text-align: left;
+  width: 300px;
+}
+
+button {
+  text-align: center;
+  padding: 7px;
+  margin-top: 10px;
+}
+
+invalid {
+  border: 1px solid red;
+}
+
+/* input:required {
+  border: 1px solid black;
+} */
+
+valid {
+  border: 1px solid green;
+}
