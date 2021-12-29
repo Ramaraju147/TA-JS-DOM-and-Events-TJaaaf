@@ -1,34 +1,36 @@
-var table = document.createElement("table");
-// function randomColor() {
-//   let alphabets = "0123456789ABCDEF";
-//   let color = "#";
-//   for (i = 0; i < 6; i++) {
-//     color += alphabets[Math.floor(Math.random() * 15 + 1)];
-//   }
-//   return color;
-// }
-function createTable() {
-  table.innerHTML = "";
-  for (i = 0; i < 15; i++) {
-    var tr = document.createElement("tr");
-    for (j = 0; j < 15; j++) {
-      var td = document.createElement("td");
-      td.style.backgroundColor =
-        "#" + (((1 << 24) * Math.random()) | 0).toString(16);
-      var text = document.createTextNode(Math.floor(Math.random() * 300 + 1));
-      td.appendChild(text);
-      tr.appendChild(td);
-    }
-    table.appendChild(tr);
+function disco(){
+let table = document.createElement("table");
+for(let i=0;i<20;i++){
+  let tr = document.createElement("tr");
+  for(let j=0;j<20;j++){
+    let td = document.createElement("td");
+    td.innerText = Math.floor(Math.random() * 400)
+    tr.append(td)
   }
-  return table;
+  table.append(tr);
+}
+return table;
 }
 
-function addHtml() {
-  document.body.appendChild(createTable());
+document.body.append(disco());
+
+
+let discoTable = document.querySelector("table");
+
+let allTd = document.querySelectorAll("td");
+
+function generateRandomColor(){
+  let letters = "123456789ABCDEF";
+  let color = "#";
+  for(let i=0;i<6;i++){
+    color+=letters[Math.floor(Math.random()*16)];
+  }
+  return color;
 }
 
-addHtml();
-
-let grid = document.querySelector("table");
-grid.addEventListener("mousemove", addHtml);
+discoTable.addEventListener("mousemove", () => {
+allTd.forEach(td => {
+  td.innerText= Math.floor(Math.random() * 400);
+  td.style.backgroundColor = generateRandomColor();
+})
+})
