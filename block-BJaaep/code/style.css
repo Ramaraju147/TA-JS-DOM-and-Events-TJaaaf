@@ -1,123 +1,108 @@
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
 }
-
-ol,
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 body {
-  background: #f2f4f8;
-  font-family: "Montserrat", sans-serif;
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+.text-center{
   text-align: center;
 }
 
-.container {
-  text-align: center;
-  max-width: 1280px;
-  padding: 2rem;
-  margin: 0 auto;
+*{
+  box-sizing: border-box;
+}
+
+h1{
+  font-size: 3rem;
+  margin-top: 4rem;
+}
+
+p{
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.container{
   display: flex;
-}
-
-.banner {
-  display: inline-block;
-  color: #424242;
-  font-size: 20px;
-  text-decoration: none;
-  text-align: center;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background: white;
-  border-radius: 4px;
-  min-width: 24px;
-  font-size: 20px;
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
-  border: 2px solid;
-}
-.wrapper {
-  max-width: 50%;
+  width: 80%;
   margin: 0 auto;
+  margin-top: 3rem;
+  justify-content: space-between;
 }
 
-.boxes {
+.wrapper{
+  flex: 0 1 45%;
+}
+
+h2{
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.boxes{
+  background: rgb(199,111,48);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: chocolate;
-  color: #444;
-  padding: 20px 0;
-}
-
-.wrapper:first-child {
-  margin-right: 20px;
-}
-
-.box {
-  margin: 5px;
-  background-color: #444;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 160px;
-  width: 160px;
-  display: flex;
   justify-content: center;
+}
+
+.box{
+  background-color: rgb(66,66,66);
+  padding: 2rem;
+  margin: 1rem;
+  flex: 0 1 25%;
+  height: 8rem;
+  display: flex;
   align-items: center;
-  font-size: 4rem;
-  font-weight: bold;
-  color: white;
+  justify-content: center;
   cursor: pointer;
-}
-.text {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: white;
+  font-size: 2rem;
 }
 
-.first {
-  margin-right: 20px;
-}
-
-h2 {
-  font-weight: bolder;
-  padding-bottom: 10px;
-}
-
-.heading {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.box.is-flipped {
+.flip-box {
   transform: rotateY(180deg);
 }
