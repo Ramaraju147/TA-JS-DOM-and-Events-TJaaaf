@@ -1,17 +1,27 @@
-let boxes = document.querySelector(".box-2");
-let parentBox = document.querySelector(".box-1");
-let childBoxes = parentBox.querySelectorAll(".box");
+let boxes_1 = document.querySelectorAll(".box-1 .box")
+let boxes_2 =  document.querySelectorAll(".box-2 .box")
+let box_2 = document.querySelector(".box-2")
 
-childBoxes.forEach((b) =>
-  b.addEventListener("click", function () {
-    eventHandler(event);
+function assignNumber(arr){
+  arr.forEach((box,index) => {
+    box.setAttribute("data-number",index+1);
   })
-);
+}
 
-boxes.addEventListener("click", function () {
-  eventHandler(event);
-});
+assignNumber(boxes_1);
+assignNumber(boxes_2);
 
-function eventHandler(e) {
-  e.target.innerText = e.target.innerText ? "" : "1";
+
+boxes_1.forEach((box) => {
+  box.addEventListener("click",eventHandler)
+})
+
+box_2.addEventListener("click",eventHandler)
+
+function eventHandler(event){
+  console.dir(event.target)
+  if(event.target.tagName !== "UL"){
+  event.target.innerText = Number(event.target.dataset.number);
+    setTimeout(() => {event.target.innerText=""},5000)
+  }
 }
