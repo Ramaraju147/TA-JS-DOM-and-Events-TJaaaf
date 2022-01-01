@@ -1,33 +1,29 @@
-const container = document.querySelector("form");
-const form = document.querySelector(".form");
-const result = document.querySelector(".result");
+let form = document.querySelector("form");
+let result = document.querySelector(".result");
 
-const details = {};
+form.addEventListener("submit",()=>{
+  event.preventDefault();
+  let name = form.elements.name.value;
+  let email = form.elements.email.value;
+  let favorite = form.elements.favorite.value;
+  let color = form.elements.color.value;
+  let rating = form.elements.rating.value;
+  let genre = form.elements.genre.value;
+  let terms = form.elements.terms.checked;
 
-container.addEventListener("submit", (e) => {
-  handleEvent(e);
-});
-
-function handleEvent(e) {
-  e.preventDefault();
-  details.name = container.elements.text.value;
-  details.email = container.elements.email.value;
-  details.gender = container.elements.gender.value;
-  details.color = container.elements.color.value;
-  details.range = container.elements.range.value;
-  details.drone = container.elements.drone.value;
-  details.terms = container.elements.terms.value;
-  form.classList.add("hidden");
   let html = `
-    <a href="./index.html">Close</a>
-    <h1>Hello ${details.name}</h1>
-    <p>Email: ${details.email}</p>
-    <p>You Love:${details.gender}</p>
-    <p>Color:${details.color}</p>
-    <p>Rating:${details.range}</p>
-    <p>Book Genre:${details.drone}</p>
-    <p>You ${details.terms ? "agree" : "disagree"} to the terms</p>
-     `;
-  result.innerHTML = html;
+  <div class="padding">
+  <a href="./index.html" class="right-align">Close</a>
+  <h1>Hello ${name}</h1>
+  <p>Email: ${email}</p>
+  <p>You Love: ${favorite}</p>
+  <p>Color: ${color}</p>
+  <p>Rating: ${rating}</p>
+  <p>Book Genre: ${genre}</p>
+  <p>You ${terms?"agree":"disagree"} to Terms and Conditions</p>
+  </div>
+  `
   result.classList.remove("hidden");
-}
+  form.classList.add("hidden")
+  result.innerHTML = html;
+})
