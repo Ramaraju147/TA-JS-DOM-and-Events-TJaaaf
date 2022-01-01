@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper and Scissors</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1> Rock Paper Scissors</h1>
+      <div class="container-body">
+      <div class="user">
+        <h2>You - <span class="user_score">0</span><span class="user_selection"></span></h2>
+        <div class="user-icons">
+          <i class="far fa-hand-scissors" data-name="scissors"></i>
+          <i class="far fa-hand-paper" data-name="paper"></i>
+          <i class="far fa-hand-rock" data-name="rock"></i>
+        </div>
+      </div>
+      <div class="computer">
+        <h2>Computer - <span class="computer_score">0</span><span class="computer_selection"></span></h2>
+        <div class="computer-icons">
+          <i class="far fa-hand-scissors" data-name="scissors"></i>
+          <i class="far fa-hand-paper" data-name="paper"></i>
+          <i class="far fa-hand-rock" data-name="rock"></i>
+        </div>
+      </div>
+      <div>
+        <i class="fas fa-sync-alt reset"></i>
+        <span class="result">
+        </span>
+      </div>
+    </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
