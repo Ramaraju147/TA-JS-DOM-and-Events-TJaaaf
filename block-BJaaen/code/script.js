@@ -1,68 +1,56 @@
-const player_icons = document.querySelector(".player-1");
-const player_selection = document.querySelector(".selected-1");
-const computer_selection = document.querySelector(".selected-2");
-const com_icons = document.querySelector(".player-2");
-const com = document.querySelectorAll(".com");
-const i = document.querySelectorAll("i");
-const resetBtn = document.querySelector(".reset");
-const result = document.querySelector(".result");
-const player_1_count = document.querySelector(".Player-1-count");
-const computer_count = document.querySelector(".computer-count");
-let player, computer;
+let reset = document.querySelector(".reset");
+let userScore = document.querySelector(".user_score");
+let computerScore = document.querySelector(".computer_score");
+let userSelection = document.querySelector(".user_selection");
+let computerSelection = document.querySelector(".computer_selection");
+let result = document.querySelector(".result");
+let userIcons = document.querySelectorAll(".user i")
+let computerIcons = document.querySelectorAll(".computer i")
+let allIcons = document.querySelectorAll("i")
 
-player_icons.addEventListener("click", handleEvent);
-resetBtn.addEventListener("click", resetAll);
+reset.addEventListener("click", ()=>{
+  userScore.innerText = 0;
+  computerScore.innerText =0;
+  userSelection.innerText="";
+  computerSelection.innerText="";
+  result.innerText="";
+  allIcons.forEach(icon => icon.classList.remove("active"))
+})
 
-function handleEvent(e) {
-  player = "---" + e.target.attributes["data-name"].value;
-  player_selection.innerHTML = player;
-  resetAll();
-  e.target.style.color = "blue";
-  randomComputerSelector();
-  winner();
-}
-
-function winner() {
-  if (
-    (player_selection.innerHTML == "---Rock" &&
-      computer_selection.innerHTML == "---Paper") ||
-    (player_selection.innerHTML == "---Paper" &&
-      computer_selection.innerHTML == "---Scissors") ||
-    (player_selection.innerHTML == "---Scissors" &&
-      computer_selection.innerHTML == "---Rock")
-  ) {
-    result.innerHTML = "You Lost!";
-    computer_count.innerText = Number(computer_count.innerText) + 1;
-  } else if (
-    (player_selection.innerHTML == "---Rock" &&
-      computer_selection.innerHTML == "---Rock") ||
-    (player_selection.innerHTML == "---Paper" &&
-      computer_selection.innerHTML == "---Paper") ||
-    (player_selection.innerHTML == "---Scissors" &&
-      computer_selection.innerHTML == "---Scissors")
-  ) {
-    result.innerHTML = "It's a Tie!";
-  } else {
-    result.innerHTML = "You Won!";
-    player_1_count.innerText = Number(player_1_count.innerText) + 1;
+function winner(event,computerPick){
+  let userData = event.target.dataset.name;
+  let computerData = computerPick.dataset.name;
+  if((userData == "scissors" && computerData == "paper") || (userData == "paper" && computerData == "rock") || (userData == "rock" && computerData == "scissors") ){
+    result.innerText = "You Won!";
+    userScore.innerText = Number(userScore.innerText) + 1;
+    userSelection.innerText = `  ---${userData}`
+    computerSelection.innerText = `  ---${computerData}`
+  }else if((computerData == "scissors" && userData == "paper") || (computerData == "paper" && userData == "rock") || (computerData == "rock" && userData == "scissors") ){
+    result.innerText = "Computer Won!";
+    computerScore.innerText = Number(computerScore.innerText) + 1;
+    userSelection.innerText = `  ---${userData}`
+    computerSelection.innerText = `  ---${computerData}`
+  }else{
+    result.innerText = "It's a Tie!";
+    userSelection.innerText = `  ---${userData}`
+    computerSelection.innerText = `  ---${computerData}`
   }
+  allIcons.forEach(icon => icon.classList.remove("active"))
+  event.target.classList.add("active")
+  computerPick.classList.add("active")
+
 }
 
-function resetAll(e) {
-  console.log(e);
-  if (e ? (e.target = resetBtn) : false) {
-    player_selection.innerHTML = "";
-    computer_selection.innerHTML = "";
-    player_1_count.innerText = 0;
-    computer_count.innerHTML = 0;
-    result.innerHTML = "";
-  }
-  i.forEach((x) => (x.style.color = "black"));
+function userClick(){
+  userIcons.forEach((icon) => {
+    icon.addEventListener("click", (event)=> {
+      computerClick(event);
+    })
+  })
 }
+userClick()
 
-function randomComputerSelector() {
-  let random = Math.floor(Math.random() * 3);
-  let ele = com[random];
-  ele.style.color = "red";
-  computer_selection.innerHTML = "---" + ele.dataset["name"];
+function computerClick(event){
+  let randomPick = computerIcons[Math.floor(Math.random()*3)]
+  winner(event,randomPick)
 }
