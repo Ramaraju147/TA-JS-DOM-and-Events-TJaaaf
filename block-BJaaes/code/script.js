@@ -1,47 +1,68 @@
-const form = document.querySelector("form");
+let form = document.querySelector("form");
+let result = document.querySelector(".result");
+let allInputs = document.querySelectorAll("input");
+let container = document.querySelector(".container");
 
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("submit",(event)=>{
+event.preventDefault();
+let name = form.elements.name
+console.log(name.nextElementSibling)
+let email = form.elements.email
+let number = form.elements.number
+let password = form.elements.password
+let confirmPassword = form.elements.confirm_password
 
-function handleSubmit(e) {
-  e.preventDefault();
-  let errorMessage = "";
-  let name = e.target.elements.name;
-  let email = e.target.elements.email;
-  let phoneNo = e.target.elements.number;
-  let password = e.target.elements.password;
-  let confirmPassword = e.target.elements["confirm-password"];
-  if (name.value.length < 4) {
-    errorMessage = "UserName can't be less than 4 characters";
-    name.nextElementSibling.innerText = errorMessage;
-    name.classList;
-  } else if (validateName(name.value)) {
-    errorMessage = "You can't use number in the name field";
-    name.nextElementSibling.innerText = errorMessage;
-  }
-
-  if (!validateEmail(email.value)) {
-    errorMessage = "Not a valid email";
-    email.nextElementSibling.innerText = errorMessage;
-  } else if (email.length > 6) {
-    errorMessage = "Email can't be less than 6 characters";
-    email.nextElementSibling.innerText = errorMessage;
-  }
-
-  if (phoneNo.length > 6) {
-    errorMessage = "Phone No can't be less than 7 characters";
-    email.nextElementSibling.innerText = errorMessage;
-  }
-
-  if (!(password.value === confirmPassword.value)) {
-    errorMessage = "Password doesn't match";
-    confirmPassword.nextElementSibling.innerText = errorMessage;
-  }
+if(name.value<4){
+  name.nextElementSibling.innerText = "Name can't be less than 4 characters"
+  name.classList.add("error")
+}else if(name.value.split("").some(e => Number(e))){
+  name.nextElementSibling.innerText = "You can't use number in the name field"
+  name.classList.add("error")
+}else{
+  name.nextElementSibling.innerText = ""
+  name.classList.remove("error")
+  name.classList.add("success")
+}
+console.log(name.classList)
+if(email.value.length<=6 || !email.value.split("").some(e => e==="@")){
+  email.nextElementSibling.innerText = "Not a valid email"
+  email.classList.add("error")
+}else{
+  email.nextElementSibling.innerText = ""
+  email.classList.remove("error")
+  email.classList.add("success")
 }
 
-function validateName(name) {
-  return name.split("").some((e) => Number(e));
+if( !number.value.split("").every(e => Number(e))){
+  number.nextElementSibling.innerText = "Phone number can only contain numbers"
+  number.classList.add("error")
+}else if(number.value.length<7 ){
+  number.nextElementSibling.innerText = "Phone number cannot be less than 7 digits"
+  number.classList.add("error")
+}else{
+  number.nextElementSibling.innerText = ""
+  number.classList.remove("error")
+  number.classList.add("success")
 }
 
-function validateEmail(email) {
-  return email.split("").some((e) => e === "@");
+
+if(password.value !== confirmPassword.value ){
+  confirmPassword.nextElementSibling.innerText = "Password didn't match"
+  confirmPassword.classList.add("error")
+}else if(confirmPassword.value==""){
+  confirmPassword.nextElementSibling.innerText = "Password can't be empty"
+  confirmPassword.classList.add("error")
+}else{
+  confirmPassword.nextElementSibling.innerText = ""
+  confirmPassword.classList.remove("error")
+  confirmPassword.classList.add("success")
 }
+
+let arrInputs = [...allInputs]
+if(arrInputs.every(input => !input.classList.contains("error"))){
+  container.classList.add("hidden")
+  result.classList.remove("hidden");
+  result.innerText = "User Added Successfully!!!"
+}
+
+})
