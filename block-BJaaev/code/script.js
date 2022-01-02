@@ -1,92 +1,86 @@
-function main() {
-  const todo_list = document.querySelector(".todo-list");
-  const input = document.querySelector("input[type='text']");
-  const active = document.querySelector(".active");
-  const completed = document.querySelector(".completed");
-  const all = document.querySelector(".all");
-  const clear = document.querySelector(".clear");
+let input = document.querySelector("input");
+let todoList = document.querySelector(".todo-list");
+let all = document.querySelector(".all");
+let completed = document.querySelector(".completed");
+let active = document.querySelector(".active");
+let clear = document.querySelector(".clear");
+let data = JSON.parse(localStorage.getItem("data")) || [];
 
-  let input_value = JSON.parse(localStorage.getItem("todos")) || [];
+input.addEventListener("keyup",handleEvent);
 
-  input.addEventListener("keyup", handleInput);
+all.addEventListener("click",handleAll);
 
-  all.addEventListener("click", handleAll);
+completed.addEventListener("click",handleCompleted);
 
-  completed.addEventListener("click", handleCompleted);
+active.addEventListener("click",handleActive);
 
-  active.addEventListener("click", handleActive);
+clear.addEventListener("click",handleClear);
 
-  clear.addEventListener("click", handleClear);
-
-  createUI(input_value);
-
-  function handleClear(e) {
-    input_value = input_value.filter((e) => e.completed === false);
-    console.log(input_value);
-    createUI(input_value);
-  }
-
-  function handleActive(e) {
-    let array = input_value.filter((e) => e.completed === false);
-    createUI(array);
-  }
-
-  function handleCompleted(e) {
-    let array = input_value.filter((e) => e.completed === true);
-    createUI(array);
-  }
-
-  function handleAll(e) {
-    createUI(input_value);
-  }
-
-  function handleInput(e) {
-    if (e.keyCode === 13) {
-      if (e.target.value.length) {
-        input_value.push({
-          todo: e.target.value,
-          completed: false,
-        });
-        createUI(input_value);
-      }
-      e.target.value = "";
-      localStorage.setItem("todos", JSON.stringify(input_value));
-    }
-  }
-
-  function handleClick(e) {
-    let id = e.target.dataset.id;
-    input_value[id].completed = !input_value[id].completed;
-    localStorage.setItem("todos", JSON.stringify(input_value));
-    console.log(input_value);
-  }
-
-  function handleDelete(e) {
-    let id = e.target.dataset.id;
-    input_value.splice(id, 1);
-    localStorage.setItem("todos", JSON.stringify(input_value));
-    createUI(input_value);
-  }
-
-  function createUI(input_value) {
-    console.log(input_value);
-    todo_list.innerHTML = "";
-    input_value.forEach((e, i) => {
-      let li = document.createElement("li");
-      let input = document.createElement("input");
-      input.setAttribute("type", "checkbox");
-      input.dataset.id = i;
-      input.checked = input_value[i].completed;
-      input.addEventListener("click", handleClick);
-      let p = document.createElement("p");
-      p.innerText = e.todo;
-      let span = document.createElement("span");
-      span.innerHTML = "<i class='fas fa-times'></i>";
-      span.addEventListener("click", handleDelete);
-      li.append(input, p, span);
-      todo_list.append(li);
-    });
-  }
+function handleClear(){
+  data = data.filter(todo => !todo.isDone)
+  createUI(data);
+  localStorage.setItem("data", JSON.stringify(data));
 }
 
-main();
+function handleActive(){
+  let activeData = data.filter(todo => !todo.isDone)
+  createUI(activeData)
+}
+
+function handleCompleted(){
+  let completedData = data.filter(todo => todo.isDone)
+  createUI(completedData)
+}
+
+function handleAll(){
+  createUI(data);
+}
+
+function handleEvent(){
+if(event.keyCode === 13 && event.target.value !==""){
+  let todo = {
+    name: event.target.value,
+    isDone: false
+  }
+  data.push(todo)
+  localStorage.setItem("data", JSON.stringify(data));
+  event.target.value=""
+}
+createUI()
+}
+
+function handleClick(){
+let id = event.target.dataset.id;
+data.splice(id,1);
+localStorage.setItem("data", JSON.stringify(data));
+createUI();
+}
+
+function handleInput(){
+  let id = event.target.dataset.id;
+  data[id].isDone = !data[id].isDone
+  localStorage.setItem("data", JSON.stringify(data));
+  createUI()
+}
+
+function createUI(todos=data){
+  todoList.innerHTML=""
+  todos.forEach((todo,index) => {
+    let li = document.createElement("li");
+    let input = document.createElement("input");
+    input.setAttribute("type","checkbox");
+    input.setAttribute("data-id",index);
+    input.checked = todo.isDone
+    input.addEventListener("input",handleInput)
+    let p = document.createElement("p");
+    p.innerText=todo.name
+    let span = document.createElement("span")
+    span.innerHTML = `<i class="far fa-times-circle" data-id=${index}></i>`
+    span.addEventListener("click",handleClick)
+    console.log(li)
+    li.append(input,p,span)
+    todoList.append(li)
+  })
+}
+
+createUI()
