@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Handeling Forms 👇</title>
+  </head>
+  <body>
+    <form action="#">
+      <div>
+      <div class="input">
+      <label for="name" class="label">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+      </div>
+      <div class="input">
+        <label for="email" class="label">Your Email:</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email">
+      </div>
+      <div class="input">
+        <label for="favorite" class="label">What do you love?</label>
+        <select name="favorite" id="favorite">
+          <option value="Movies">Movies</option>
+          <option value="Series">Series</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="input">
+        <label for="color" class="label">Choose a color</label>
+        <input type="color" id="color" name="color">
+      </div>
+      <div class="input">
+        <label for="rating" class="label">Rate the movie Inception out of 10</label>
+        <input type="range" id="rating" name="rating" min="0" max="10">
+      </div>
+      <div class="input">
+       <p>Book genre you love?</p>
+       <input type="radio" id="fiction" name="genre">
+       <label for="fiction">Fiction</label>
+       <input type="radio" id="non-fiction" name="genre">
+       <label for="non-fiction">Non Fiction</label>
+       <input type="radio" id="adventure" name="genre">
+       <label for="adventure">Adventure</label>
+      </div>
+      <div class="input">
+        <input type="checkbox" id="terms" name="terms">
+        <label for="terms">I Agree to Terms</label>
+      </div>
+      <button type="submit">Submit</button>
+    </div>
+    </form>
+    <div class="result hidden">
+
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
