@@ -1,35 +1,81 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
 }
 
-body {
-  margin: 20px 0;
+body{
+  margin: 2rem 0;
   background: #6589f9;
 }
 
-.grid {
-  max-width: 960px;
+
+
+.grid, #main{
+  max-width:640px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
-.card {
+#main p{
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card{
+  margin: 5px;
   position: relative;
   transition: all 0.4s linear;
   transform-style: preserve-3d;
-  margin: 10px;
-  height: 150px;
-  width: 22%;
-  font-size: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
+.card,
 .back,
 .front {
   height: 150px;
@@ -44,17 +90,27 @@ body {
 
 .front {
   z-index: 2;
-  background: rgba(0, 0, 0, 0.5)
-    url("https://media3.giphy.com/media/XzwNSzxBTzXYL8KHat/giphy.gif") no-repeat
-    fixed center;
+  background: #fab942 url('https://c.tenor.com/1u0S8E5indkAAAAM/mario-block.gif') no-repeat center center /
+    contain;
 }
 
 .back {
-  transform: rotateY(180deg);
-  background-color: #6589f9;
+  transform: rotateY(180deg); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.card i{
+  font-size: 6rem;
+}
+
+.match{
+  visibility: hidden;
 }
 
 .selected {
@@ -62,25 +118,5 @@ body {
 }
 
 .match .front {
-  background: #6589f9 !important;
-  visibility: hidden;
-}
-
-#count {
-  font-size: 32px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 20px 200px;
-}
-
-#time {
-  font-size: 32px;
-}
-
-.end {
-  font-size: 32px;
+  background: white !important;
 }
