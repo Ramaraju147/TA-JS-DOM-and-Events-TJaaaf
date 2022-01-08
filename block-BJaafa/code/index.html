@@ -13,19 +13,186 @@
     />
   </head>
   <body>
-    <div class="search">
-      <div class="input">
-        <input type="text" />
-        <div>
-          <button>
-            <i class="fas fa-search"></i>
-          </button>
+    <div class="container">
+    <section class="main flex">
+      <div>
+        <i class="fas fa-cloud-sun-rain"></i>
+      </div>
+      <form role="search" action="http://www.google.com/search" method="get" class="input flex">
+      <input type="text" name="q" placeholder="Search the web...">
+      <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <div class="settings">
+        <i class="fas fa-cog"></i>
+        <div class="pop-up hidden">
+          <h3>Change Unit</h3>
+          <div class="flex units">
+          <div class="radio">
+          <input type="radio" name="scale" id="celsius" value="celsius" checked>
+          <label for="celsius">Celsius</label>
+          </div>
+          <div class="radio">
+          <input type="radio" name="scale" id="fahrenheit" value="fahrenheit" >
+          <label for="fahrenheit">Fahrenheit</label>
+          </div>
+        </div>
         </div>
       </div>
-      <h1 class="heading"></h1>
-      <div class="time"></div>
-      <div class="weather"></div>
-    </div>
+    </section>
+    <section class="body">
+      <div class="location">
+        <div>
+        <h1 class="city">Cincinnati, US</h1>
+        <p class="date">Thursday January 6, 2022</p>
+       </div>
+       <div class="weather-info flex">
+         <div class="flex current">
+           <div class="current-icon">
+        </div>
+          <div>
+            <p class="current-temp"></p>
+            <p class="current-climate">snow</p>
+          </div>
+        </div>
+          <div class="vertical-line"></div>
+          <div class="today-climate">
+            <div class="flex row">
+              <div>
+                <p class="high-temp">
+                  -4°C
+                </p>
+                <p>
+                  High
+                </p>
+              </div>
+              <div>
+                <p class="wind">
+                  5.58mps
+                </p>
+                <p>
+                  Wind
+                </p>
+              </div>
+              <div>
+                <p class="sunrise">
+                  
+                </p>
+                <p>
+                  Sunrise
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div>
+                <p class="low-temp">
+                  -4°C
+                </p>
+                <p>
+                  Low
+                </p>
+              </div>
+              <div>
+                <p class="humidity">
+                  
+                </p>
+                <p>
+                  Humidity
+                </p>
+              </div>
+              <div>
+                <p class="sunset">
+            
+                </p>
+                <p>
+                  Sunset
+                </p>
+              </div>
+            </div>
+          </div>
+       </div>
+       <h2>Next 5 days</h2>
+       <div class="cards">
+         <div class="card flex">
+           <div>
+             <h5 class="day-1">Fri</h5>
+             <p class="date-1">8/1</p>
+           </div>
+           <i class="far fa-sun"></i>
+           <div>
+             <h5 class="low-1">-10°C</h5>
+             <p>Low</p>
+           </div>
+           <div>
+            <h5 class="low-1">-4°C</h5>
+            <p>High</p>
+          </div>
+          <div>
+            <h5 class="low-1">4.29mps</h5>
+            <p>Wind</p>
+          </div>
+         </div>
+         <div class="card flex">
+          <div>
+            <h5 class="day-1">Fri</h5>
+            <p class="date-1">8/1</p>
+          </div>
+          <i class="far fa-sun"></i>
+          <div>
+            <h5 class="low-1">-10°C</h5>
+            <p>Low</p>
+          </div>
+          <div>
+           <h5 class="low-1">-4°C</h5>
+           <p>High</p>
+         </div>
+         <div>
+           <h5 class="low-1">4.29mps</h5>
+           <p>Wind</p>
+         </div>
+        </div>
+        <div class="card flex">
+          <div>
+            <h5 class="day-1">Fri</h5>
+            <p class="date-1">8/1</p>
+          </div>
+          <i class="far fa-sun"></i>
+          <div>
+            <h5 class="low-1">-10°C</h5>
+            <p>Low</p>
+          </div>
+          <div>
+           <h5 class="low-1">-4°C</h5>
+           <p>High</p>
+         </div>
+         <div>
+           <h5 class="low-1">4.29mps</h5>
+           <p>Wind</p>
+         </div>
+        </div>
+        <div class="card flex">
+          <div>
+            <h5 class="day-1">Fri</h5>
+            <p class="date-1">8/1</p>
+          </div>
+          <i class="far fa-sun"></i>
+          <div>
+            <h5 class="low-1">-10°C</h5>
+            <p>Low</p>
+          </div>
+          <div>
+           <h5 class="low-1">-4°C</h5>
+           <p>High</p>
+         </div>
+         <div>
+           <h5 class="low-1">4.29mps</h5>
+           <p>Wind</p>
+         </div>
+        </div>
+       </div>
+      </div>
+    </section>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
